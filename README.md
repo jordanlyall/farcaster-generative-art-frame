@@ -1,6 +1,6 @@
 ## Farcaster Generative Art Frame
 
-This code creates a frame which can be used on any Farcaster client that lets the user generate random pieces of art and mint them.
+This code creates a frame which can be used on any Farcaster client that lets the user generate random pieces of art and mint them. _Disclaimer: this code was written in a couple hours as a weekend hack a couple weeks after frames launched. I'm sure there are better ways to do some of these things now_.
 
 ### Setup
 
@@ -15,7 +15,9 @@ Clone repo, then run `npm i`.
 
 ### How it Works
 
-The frame route is in `pages/api/gen.js`. This file does the following:
+The initial frame renders with the `Head` tags in the `pages/frames/genArt.js` file. Update your image to what you want the first frame to show there.
+
+The frame route from the initial frame is in `pages/api/gen.js`. This file does the following:
 
 1. Uses the Pinata FDK to validate the frame message. If it's not valid, it returns an error image. _You'll need to host the error image on your server and update the URL to it in the code_.
 2. If the message is valid, it runs the FID through one of the functions in `util/createImage.js`. There's 2 functions, one is for FID's lower than 200, and the other is for everyone else. Both functions generate a random base64 image.
@@ -23,7 +25,7 @@ The frame route is in `pages/api/gen.js`. This file does the following:
 4. Stores the Imgur url in your backend, associated with the FID. _You'll need to make sure your backend can store this data, and set the env api host to your backend's URL_.
 5. Returns the Imgur url to the frame with buttons to generate another or mint the piece.
 
-When the user clicks one of the buttons, the route `/api/mingGen` is called and the code in `/api/mintGen.js` is executed. This code does the following:
+When the user clicks one of the buttons, the route `/api/mintGen` is called and the code in `/api/mintGen.js` is executed. This code does the following:
 
 1. Uses the Pinata FDK to validate the frame message. If it's not valid, it returns an error image. _You'll need to host the error image on your server and update the URL to it in the code_.
 2. If it is valid, it checks the button index.
@@ -42,3 +44,7 @@ Once you have your contract, you can begin the process of minting the NFT. Here'
 4. Gets the ETH address for that FID using the Pinata FDK.
 5. Calls the `mintNFT` function on the contract with the ipfs hash of the json and the ETH address as arguments.
 6. Returns the Imgur link to the frame.
+
+### Deployment
+
+You can easily deploy this code to [Vercel](https://www.vercel.com) with a free account.
