@@ -1,0 +1,25 @@
+{
+  "name": "nft-genart",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/material": "^5.14.8",
+    "@napi-rs/canvas": "^0.1.44",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.12",
+    "ethers": "^6.11.1",
+    "next": "^13.3.4",
+    "pinata-fdk": "^3.3.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
