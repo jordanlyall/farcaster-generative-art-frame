@@ -7,7 +7,7 @@ export const storeImgurInBackend = async (data) => {
     body: JSON.stringify(data),
   };
 
-  const url = `${process.env.API_HOST}/api/v1/gen_art_nfts`;
+  const url = `${process.env.API_HOST}/api/v1/nft`;
   return fetch(url, options)
     .then((response) => response.json())
     .then((response) => response)
